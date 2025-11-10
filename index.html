@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ookie! Profile</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS to achieve the retro box shadow and border look */
+        .retro-card {
+            box-shadow: 4px 4px 0 0 #000;
+            border: 2px solid #000;
+        }
+
+        /* Overlay for the video background to ensure content readability and B&W theme */
+        .video-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Semi-transparent black overlay */
+            background: rgba(0, 0, 0, 0.65); 
+            z-index: 1;
+        }
+
+        /* Ensure the body uses a monospaced font for that old-school digital feel */
+        body {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        
+        /* Ensures the custom images are centered and sized correctly */
+        .social-icon {
+            width: 28px; /* Slightly larger size for visibility */
+            height: 28px;
+            object-fit: contain;
+            filter: grayscale(100%); /* Ensure the custom image remains B&W */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Video Background Container -->
+    <div id="video-bg" class="fixed inset-0 overflow-hidden video-container">
+        <!-- 
+            The video uses the uploaded file '720P.mp4'.
+            It is set to autoplay, loop, mute, and rendered in grayscale to match the theme.
+        -->
+        <video autoplay loop muted class="absolute z-0 w-full h-full object-cover filter grayscale opacity-90">
+            <source src="720P.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Main Profile Card - Centered on screen, fixed width, with the retro style applied -->
+    <div class="relative z-10 w-full max-w-xl mx-auto bg-white rounded-lg retro-card overflow-hidden shadow-2xl">
+
+        <!-- 1. Title Bar (Mimics a desktop window) -->
+        <div class="bg-black text-white p-2 flex justify-between items-center text-sm border-b-2 border-black">
+            <div class="flex items-center space-x-2">
+                <!-- Window control buttons (aesthetic) -->
+                <span class="w-2 h-2 bg-red-500 rounded-full inline-block"></span>
+                <span class="w-2 h-2 bg-yellow-500 rounded-full inline-block"></span>
+                <span class="w-2 h-2 bg-green-500 rounded-full inline-block"></span>
+                <!-- Updated text to ;ruffle -->
+                <span class="ml-2 font-bold">;ruffle</span>
+            </div>
+            <!-- Added binary code here -->
+            <span class="text-xs">01101000 01101001</span>
+        </div>
+
+        <!-- 2. Banner Image (Using uploaded 'banner.png') -->
+        <!-- CHANGED HEIGHT from h-20 to h-32 -->
+        <div class="h-32 bg-gray-200 border-b-2 border-black relative overflow-hidden">
+            <!-- Using the uploaded image file and forcing it to grayscale -->
+            <div class="w-full h-full bg-cover bg-center" style="background-image: url('banner.png'); filter: grayscale(100%);"></div>
+        </div>
+
+        <!-- 3. Navigation Tabs (Home, Projects) -->
+        <div class="flex text-sm border-b-2 border-black">
+            <!-- Home Tab -->
+            <div class="py-2 px-4 border-r-2 border-black bg-gray-100 font-bold">Home</div>
+            <!-- Projects Tab - ADDED border-r-2 border-black and flex-grow for spacing -->
+            <div class="py-2 px-4 text-gray-600 cursor-pointer hover:bg-gray-50 transition duration-100 border-r-2 border-black flex-grow">Projects</div>
+        </div>
+
+        <!-- 4. Main Content Grid (Profile, Bio, and Links) -->
+        <div class="p-4 grid grid-cols-3 gap-4">
+            
+            <!-- Left Column: Profile Picture and Bio -->
+            <div class="col-span-2 space-y-3">
+                <!-- Profile Image (Using uploaded 'blackcat.png') -->
+                <img src="blackcat.png" class="w-24 h-24 object-cover rounded-lg border-2 border-black retro-card filter grayscale" alt="Profile Picture">
+                
+                <h2 class="text-2xl font-extrabold text-black">@r4ff1e</h2>
+                
+                <!-- Bio Box -->
+                <p class="text-sm border-2 border-black p-2 bg-gray-50 retro-card">
+                    i'm ;ruffle <br>
+                    pronouns: he/him <br>
+                    18, wish me on December 7th :3
+                </p>
+            </div>
+
+            <!-- Right Column: Vertical Social Links (Spotify and GitHub) -->
+            <div class="col-span-1 text-xs flex flex-col h-full justify-around"> 
+                
+                <!-- Spotify Link (UPDATED LINK and ICON) -->
+                <a href="https://open.spotify.com/user/31topws2gj2dswc2h35ziudxvmba" target="_blank" class="flex flex-col items-center justify-center p-4 border-2 border-black text-black cursor-pointer hover:bg-gray-100 transition duration-150 group retro-card">
+                    <!-- Custom Spotify Icon -->
+                    <img src="spotify.png" alt="Spotify Icon" class="social-icon group-hover:scale-110 transition duration-150">
+                    <span class="text-xs mt-1 font-bold">Spotify</span>
+                </a>
+                
+                <!-- GitHub Link (UPDATED LINK and ICON) -->
+                <a href="https://github.com/R4ff1e/" target="_blank" class="flex flex-col items-center justify-center p-4 border-2 border-black text-black cursor-pointer hover:bg-gray-100 transition duration-150 group retro-card">
+                    <!-- Custom GitHub Icon -->
+                    <img src="gtihub logo.png" alt="GitHub Icon" class="social-icon group-hover:scale-110 transition duration-150">
+                    <span class="text-xs mt-1 font-bold">GitHub</span>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
